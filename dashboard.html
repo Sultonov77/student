@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+    </style>
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <div class="student-page flex">
+      <!-- left side -->
+      <div class="left-side w-[18%] pt-5 pl-12">
+        <img
+          src="./images/admin/Logo.svg"
+          alt="logo"
+          class="flex w-[280px]text-center"
+        />
+        <div class="flex-wrap justify-center items-center pt-8">
+          <label class="inline-block">
+            <input type="file" class="choose-input hidden" />
+            <img
+              src="./images/admin/profile.svg"
+              alt="chooseimg"
+              width="220"
+              height="60"
+              class="choose-img rounded-[50%]"
+            />
+          </label>
+          <h1
+            class="text-xl text-center profile-name2 font-bold text-black-500 pt-5"
+          >
+            Madesh
+          </h1>
+          <h2 class="font-bold text-yellow-400 pl-14 py-4">Admin</h2>
+          <button
+            class="flex gap-2 w-[180px] bg-yellow-500 hover:bg-yellow-600 text-black py-2 px-4 px-4 rounded"
+          >
+            <img
+              src="./images/admin/graduation-cap.svg"
+              alt="cap"
+              class="mt-1 ml-4"
+            />
+            <h2>Students</h2>
+          </button>
+        </div>
+        <button class="flex ml-[28px] mt-[120px] p-1" onclick="log()">
+          <img src="./images/admin/sign-out.svg" class="mt-1" alt="sign-out" />
+          <p class="ml-4">Log out</p>
+        </button>
+      </div>
+      <!-- right side -->
+      <div class="right-side w-[75%] pt-7 pl-[120px] flex-wrap">
+        <div>
+          <button class="mr-[450px] p-1" onclick="skip()">
+            <img src="./images/admin/skip.svg" alt="skip" />
+          </button>
+          <label class="p-1">
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Search...."
+              class="w-[250px] h-[35px] pl-[10px] rounded-[10px] border-2"
+            />
+          </label>
+          <button onclick="notification()" class="ml-5 p-1">
+            <img src="./images/admin/bell.svg" alt="bell" />
+          </button>
+        </div>
+        <div
+          class="mt-20 dashboard-modal p-10 mx-left bg-white w-[550px] flex rounded-[10px]"
+        >
+          <div>
+            <img
+              src="./images/admin/profile.svg"
+              alt="profile"
+              class="w-[200px] h-[200px]"
+            />
+            <h1 class="text-black-500 text-bold text-2xl p-4">Kardhi Madesh</h1>
+          </div>
+          <div>
+            <h1 class="text-black-500 text-bold text-xl pl-10 pt-5">Student</h1>
+            <h1 class="text-black-500 text-bold text-xl pl-10 pt-5">
+              karthi@gmmail.com
+            </h1>
+            <h1 class="text-black-500 text-bold text-xl pl-10 pt-5">
+              7305477760
+            </h1>
+            <h1 class="text-black-500 text-bold text-xl pl-10 pt-5">
+              08-Dec, 2021
+            </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/main.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>

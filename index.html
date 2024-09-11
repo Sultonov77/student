@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+    </style>
+    <title>Login</title>
+  </head>
+  <body class="signlog-body">
+    <form class="signlog-card myForm">
+      <h1
+        class="flex justify-center items-center text-4xl font-bold text-black-500 p-3"
+      >
+        Admin Students
+      </h1>
+      <h2
+        class="flex justify-center items-center text-3xl font-bold text-black-400"
+      >
+        Log in
+      </h2>
+      <h2 class="flex justify-center items-center p-2">
+        Enter your credentials to accsess your account
+      </h2>
+      <div class="p-4">
+        <h2 class="text-black-400 py-1 pl-3 text-2xl">Login</h2>
+        <label for="username" class="username p-3">
+          <input
+            type="text"
+            placeholder="Enter your login"
+            id="username"
+            required
+            autocomplete="off"
+            class="w-[92%] h-[40px] rounded-[5px] border-2 pl-[10px] focus:outline mb-4"
+          />
+        </label>
+        <h2 class="text-black-400 pl-3 py-1 text-2xl">Password</h2>
+        <label for="password" class="password p-3">
+          <input
+            type="password"
+            placeholder="Enter your password"
+            autocomplete="off"
+            required
+            id="password"
+            class="w-[92%] h-[40px] rounded-[5px] border-2 pl-[10px] focus:outline mb-4"
+          />
+        </label>
+      </div>
+      <div class="flex justify-center items-center p-3 flex-wrap">
+        <button
+          type="submit"
+          class="w-[92%] bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 rounded"
+        >
+          Login
+        </button>
+        <a onclick="signin()" class="p-1">Sign up</a>
+      </div>
+    </form>
+    <script src="./js/login.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+  </body>
+</html>

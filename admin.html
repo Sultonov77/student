@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+      }
+    </style>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+    </style>
+    <title>Admin</title>
+  </head>
+  <body>
+    <div class="student-page flex gap-[140px]">
+      <!-- left side -->
+      <div class="left-side w-[18%] pt-5 pl-12">
+        <img src="./images/admin/Logo.svg" alt="logo" class="flex w-[280px]text-center" />
+        <div class="flex-wrap justify-center items-center  pt-8">
+          <label class="inline-block">
+            <input type="file" class="choose-input hidden" />
+            <img
+              src="./images/admin/profile.svg"
+              alt="chooseimg"
+              width="220"
+              height="60"
+              class="choose-img rounded-[50%]"
+            />
+          </label>
+          <h1 class="text-xl text-center profile-name font-bold text-black-500 pt-5">Samandar</h1>
+          <h2 class="font-bold text-yellow-400  pl-14 py-4">Admin</h2>
+          <button
+            class="flex gap-2 w-[180px] bg-yellow-500 hover:bg-yellow-600 text-black py-2 px-4 px-4 rounded"
+          >
+            <img
+              src="./images/admin/graduation-cap.svg"
+              alt="cap"
+              class="mt-1 ml-4"
+            />
+            <h2>Students</h2>
+          </button>
+        </div>
+        <button
+          class="flex ml-[28px] mt-[120px] p-1"
+          id="logoutButton"
+        >
+          <img src="./images/admin/sign-out.svg" class="mt-1" alt="sign-out" />
+          <p class="ml-4">Log out</p>
+        </button>
+      </div>
+      <!-- right side -->
+      <div class="right-side w-[75%] pt-7 ">
+        <div>
+          <button
+            class="mr-[450px] p-1"
+            id="skipButton"
+          >
+            <img src="./images/admin/skip.svg" alt="skip" />
+          </button>
+          <label class="p-1">
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Search...."
+              class="w-[250px] h-[35px] pl-[10px] rounded-[10px] border-2"
+            />
+          </label>
+          <button
+            onclick="notification()"
+            class="ml-5 p-1"
+          >
+            <img src="./images/admin/bell.svg" alt="bell" />
+          </button>
+        </div>
+        <!-- student info -->
+        <div class="studentlist w-[100%] mt-5">
+          <div class="flex w-[100%] pt-4 pl-5 mb-[25px]">
+            <h1
+              class="mr-[370px] flex justify-center items-center text-2xl text-black-400"
+            >
+              Student List
+            </h1>
+            <button id="sorted">
+              <img src="./images/admin/sort.svg" alt="sort" />
+            </button>
+            <button
+              id="modalButton"
+              class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 ml-5 rounded"
+            >
+              ADD NEW STUDENT
+            </button>
+          </div>
+          <!-- modal info -->
+          <div
+            id="modal"
+            class="fixed inset-0 flex items-center justify-center bg-opacity-50 hidden"
+          >
+            <div class="bg-white p-6  rounded shadow">
+              <h2 class="text-xl font-bold mb-4">Student information</h2>
+              <form id="studentForm">
+                <input
+                  type="text"
+                  name="name"
+                  class="mb-2 p-2 w-full border border-gray-300 rounded"
+                  placeholder="Name"
+                />
+                <input
+                  type="text"
+                  name="email"
+                  class="mb-2 p-2 w-full border border-gray-300 rounded"
+                  placeholder="Email"
+                />
+                <input
+                  type="tel"
+                  name="number"
+                  class="mb-2 p-2 w-full border border-gray-300 rounded"
+                  placeholder="Phone number"
+                />
+                <input
+                  type="number"
+                  name="enroll"
+                  class="mb-2 p-2 w-full border border-gray-300 rounded"
+                  placeholder="Enroll number"
+                />
+                <input
+                  type="date"
+                  name="date"
+                  class="mb-4 p-2 w-full border border-gray-300 rounded"
+                  placeholder="Date"
+                />
+                <button
+                  type="button"
+                  id="submitButton"
+                  class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded"
+                >
+                  Submit
+                </button>
+              </form>
+            </div>
+          </div>
+          <!-- student info table -->
+          <table class="w-[90%] table  bg-orange-100">
+            <thead>
+                 <th class="text-left opacity-0">a</th>
+                <th class="text-left">Name</th>
+                <th class="text-left">Email</th>
+                <th class="text-left">Phone</th>
+                <th class="text-left">Enroll Number</th>
+                <th class="text-left">Date admission</th>
+                <th class="text-left opacity-0"></th>
+                <th class="text-left opacity-0"></th>
+              </tr>
+            </thead>
+            <tbody id="list" class="ul"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+     <!-- log out modal -->
+        <div
+          id="logoutModal"
+          class="modal fixed inset-0 hidden bg-gray-800 bg-opacity-80 items-center justify-center pt-[200px]"
+        >
+          <div class="bg-white p-6 rounded-lg shadow-lg max-w-sm mx-auto">
+            <h2 class="text-xl font-bold mb-4 ml-8">
+              Do you really want to log out?
+            </h2>
+            <div class="flex justify-center gap-10">
+              <button
+                id="confirmLogoutButton"
+                class="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded mr-2"
+              >
+                Yes,log out
+              </button>
+              <button
+                id="cancelLogoutButton"
+                class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded"
+              >
+                No,cancel
+              </button>
+            </div>
+          </div>
+        </div>
+    <script src="./js/main.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              clifford: "#da373d",
+            },
+          },
+        },
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </body>
+</html>

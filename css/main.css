@@ -1,0 +1,11 @@
+/* login and singup page */
+.signlog-body {
+    background: linear-gradient(71.17deg, #feaf00 19.35%, #f8d442 90.12%);
+}
+.signlog-card {
+    background-color: white;
+    width: 35%;
+    margin: 60px auto;
+    border-radius: 15px;
+}
+/*  */
